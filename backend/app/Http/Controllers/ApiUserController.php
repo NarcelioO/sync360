@@ -20,7 +20,21 @@ class ApiUserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create($request->all());
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'age' => 'nullable|integer',
+            'street' => 'nullable|string|max:255',
+            'neighborhood' => 'nullable|string|max:255',
+            'city' => 'nullable|string|max:255',
+            'state' => 'nullable|string|max:2',
+            'image' => 'nullable|image|max:2048',
+            'bio' => 'nullable|string',
+        ]);
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('users', 'public');
+            $validated['image'] = asset('storage/' . $path);
+        }
+        $user = User::create($validated);
         return response()->json($user, 201);
     }
 
