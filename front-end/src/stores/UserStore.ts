@@ -72,16 +72,19 @@ export const useUserStore = defineStore('user', {
             }
         },
         
-        async updateUser(user:User) {
+        
+            async updateUser(id: number, user: FormData) {
             this.loading = true;
             this.error = null;
             try {
-                const response = await axios.put<User>(`http://localhost:8000/api/users/${user.id}/`, user);
-    
-                const index = this.users.findIndex(u => u.id === user.id);
+                const response = await axios.post(`http://localhost:8000/api/users/${id}/`, user, {
+                    headers: { 'Content-Type': 'multipart/form-data' }
+                });
+                const index = this.users.findIndex(u => u.id === id);
                 if (index !== -1) {
                     this.users[index] = response.data;
                 }
+                return response.data; 
             } catch (error) {
                 this.error = 'Failed to update user';
             } finally {

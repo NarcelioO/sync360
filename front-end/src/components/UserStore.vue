@@ -1,7 +1,11 @@
 <template>
-    <div class="p-4" >
-                
-          <form @submit.prevent = "submitForm" enctype="multipart/form-data"  class="max-w-xl mx-auto mb-4 border border-gray-300 rounded-lg shadow-sm p-4 space-x-4">
+    <main class="min-h-screen flex items-center justify-center" >
+        <div class="flex flex-col items-center justify-center w-full h-full p-4 space-y-2 bg">
+            <div class="max-w-4xl mb-4 bg-amber-300">
+                <a href="/" class="px-4 py-3 bg-blue-700 text-sm font-medium rounded-lg text-white">Inicio</a> 
+            </div>
+            <div class="min-w-[420px] mb-4 border border-gray-300 rounded-lg shadow-sm p-4">
+                <form @submit.prevent = "submitForm" enctype="multipart/form-data" class="">
               <div class="mb-6">
                 <label class="block mb-2 text-sm font-medium text-black" for="image">Imagem</label>
                 <input class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none " aria-describedby="user_avatar_help" id="image" name="image" type="file" @change="onFileChange" >
@@ -39,8 +43,14 @@
               
             
               <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Salvar</button>
-          </form>
+            </form>
+            </div>
+            
         </div>
+        
+            
+         
+    </main>
 </template>
 
 <script setup lang="ts">
@@ -82,8 +92,9 @@ async function submitForm() {
     try {
         const formData = new FormData()
         for (const key in form.value) {
-        if (form.value[key] !== null && form.value[key] !== undefined) {
-            formData.append(key, form.value[key])
+        const typedKey = key as keyof typeof form.value;
+        if (form.value[typedKey] !== null && form.value[typedKey] !== undefined) {
+            formData.append(key, form.value[typedKey] as any)
         }
         }
         const response = await userStore.createUser(formData)

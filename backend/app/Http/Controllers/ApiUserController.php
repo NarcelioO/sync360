@@ -52,8 +52,24 @@ class ApiUserController extends Controller
      */
     public function update(Request $request, string $id)
     {
+         $validated = $request->validate([
+            'name' => 'sometimes|required|string|max:255',
+            'age' => 'sometimes|nullable|integer',
+            'street' => 'sometimes|nullable|string|max:255',
+            'neighborhood' => 'sometimes|nullable|string|max:255',
+            'city' => 'sometimes|nullable|string|max:255',
+            'state' => 'sometimes|nullable|string|max:2',
+            'image' => 'sometimes|nullable|image|max:2048',
+            'bio' => 'sometimes|nullable|string',
+        ]);
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('users', 'public');
+            $validated['image'] = asset('storage/' . $path);
+        }
         $user = User::findOrFail($id);
-        $user->update($request->all());
+        $user->update($validated);
+
+
 
         return response()->json($user, 200);
     }
