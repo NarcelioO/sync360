@@ -78,17 +78,12 @@ npm install
 # Configure as variáveis de ambiente
 cp .env.example .env.local
 
-# Edite o arquivo .env.local com a URL da API
-# VUE_APP_API_URL=http://localhost:8000/api
-
 # Inicie o servidor de desenvolvimento
 npm run serve
 ```
 
 ## 🌐 Endpoints da API
 
-
-### [Outros endpoints relevantes]
 - `GET /api/users` - Listar 
 - `POST /api/users/create` - Criar 
 - `PUT /api/users/{id}` - Atualizar 
@@ -98,37 +93,14 @@ npm run serve
 
 Após a instalação:
 
-- **Frontend**: http://localhost:3000 (ou a porta configurada)
+- **Frontend**: http://localhost:3175 (ou a porta configurada)
 - **Backend API**: http://localhost:8000/api
 
 
 
-## 🧪 Testes
+## Deploy
 
-### Backend
-```bash
-cd backend
-php artisan test
-```
+- **Frontend**: https://frontend-production-afa5.up.railway.app/
+- **Backend**: https://sync360-production.up.railway.app/api/users
 
-### Frontend
-```bash
-cd frontend
-npm run test
-```
-
-## 📝 Observações Importantes
-
-- O projeto foi desenvolvido seguindo as melhores práticas de desenvolvimento
-- Implementação de validações tanto no frontend quanto no backend
-- Tratamento de erros e feedback adequado ao usuário
-- Código comentado e organizado para facilitar a manutenção
-- [Outras observações relevantes]
-
-## 🔍 Decisões Técnicas
-
-### Arquitetura
-- Separação clara entre frontend e backend
-- Uso de padrões REST para a API
-- Implementação de middleware para autenticação e validação
 
