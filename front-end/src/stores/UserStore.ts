@@ -32,7 +32,7 @@ export const useUserStore = defineStore('user', {
             this.loading = true;
             this.error = null;
             try {
-                const response = await axios.get<User[]>('http://localhost:8000/api/users/');
+                const response = await axios.get<User[]>('https://sync360-production.up.railway.app/api/users/');
                 this.users = response.data;
                
             }catch (error) {
@@ -46,7 +46,7 @@ export const useUserStore = defineStore('user', {
             this.loading = true;
             this.error = null;
             try {
-                const response = await axios.get<User>(`http://localhost:8000/api/users/${id}/`);
+                const response = await axios.get<User>(`https://sync360-production.up.railway.app/api/users/${id}/`);
                 return await response.data;
             } catch (error) {
                 this.error = 'Falha ao buscar usuário';
@@ -60,7 +60,7 @@ export const useUserStore = defineStore('user', {
             this.loading = true;
             this.error = null;
             try {
-                const response = await axios.post<User>('http://localhost:8000/api/users/', user, {
+                const response = await axios.post<User>('https://sync360-production.up.railway.app/api/users/', user, {
                      headers: { 'Content-Type': 'multipart/form-data' }
                 });
                 this.users.push(response.data);
@@ -77,7 +77,7 @@ export const useUserStore = defineStore('user', {
             this.loading = true;
             this.error = null;
             try {
-                const response = await axios.post(`http://localhost:8000/api/users/${id}/`, user, {
+                const response = await axios.post(`https://sync360-production.up.railway.app/api/users/${id}/`, user, {
                     headers: { 'Content-Type': 'multipart/form-data' }
                 });
                 const index = this.users.findIndex(u => u.id === id);
@@ -96,7 +96,7 @@ export const useUserStore = defineStore('user', {
             this.loading = true;
             this.error = null;
             try {
-                await axios.delete(`http://localhost:8000/api/users/${id}/`);
+                await axios.delete(`https://sync360-production.up.railway.app/api/users/${id}/`);
                 this.users = this.users.filter(user => user.id !== id);
             } catch (error) {
                 this.error = 'Failed to delete user';
