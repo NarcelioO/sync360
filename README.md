@@ -13,17 +13,7 @@
 - **Laravel** 
 - **MySQL**
 
-
-## 🚀 Funcionalidades
-
-- ✅ [Funcionalidade 1]
-- ✅ [Funcionalidade 2]
-- ✅ [Funcionalidade 3]
-- ✅ [Funcionalidade 4]
-
 ## 📋 Pré-requisitos
-
-Antes de iniciar, certifique-se de ter instalado:
 
 - **Node.js** (versão 16 ou superior)
 - **PHP** (versão 8.0 ou superior)
@@ -35,8 +25,8 @@ Antes de iniciar, certifique-se de ter instalado:
 
 ### 1. Clone o repositório
 ```bash
-git clone [URL_DO_REPOSITORIO]
-cd [NOME_DO_PROJETO]
+git clone https://github.com/NarcelioO/sync360.git
+cd sync360
 ```
 
 ### 2. Configuração do Backend (Laravel)
