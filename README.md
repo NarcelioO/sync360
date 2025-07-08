@@ -1,7 +1,7 @@
-# 📋 Teste Técnico - Sync360
+# Teste Técnico - Sync360
 
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 ### Frontend
 - **Vue.js** 
@@ -13,7 +13,7 @@
 - **Laravel** 
 - **MySQL**
 
-## 📋 Pré-requisitos
+## Pré-requisitos
 
 - **Node.js** (versão 16 ou superior)
 - **PHP** (versão 8.0 ou superior)
@@ -21,7 +21,7 @@
 - **MySQL**
 - **Git**
 
-## 🔧 Instalação e Configuração
+## Instalação e Configuração
 
 ### 1. Clone o repositório
 ```bash
@@ -72,14 +72,14 @@ cp .env.example .env.local
 npm run serve
 ```
 
-## 🌐 Endpoints da API
+## Endpoints da API
 
 - `GET /api/users` - Listar 
 - `POST /api/users/create` - Criar 
 - `PUT /api/users/{id}` - Atualizar 
 - `DELETE /api/users/{id}` - Deletar
 
-## 📱 Acesso à Aplicação
+## Acesso à Aplicação
 
 Após a instalação:
 
